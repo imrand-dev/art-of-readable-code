@@ -33,7 +33,7 @@ def clip(text, length):
   ...
 ```
 
-There are two ways you can imagine how `Clip()` behaves:
+There are two ways you can imagine how `clip()` behaves:
 
 - It removes `length` from the end.
 - It truncates to a maximum `length`.
@@ -61,7 +61,7 @@ if shopping_cart.num_items() >= CART_TOO_BIG_LIMIT:
   raise Error("Too many items in cart.")
 ```
 
-This code has a classic off-by-one bug. We could easily fix it by changing `>=` to `>`, or by redefining `CART_TOO_BIG_LIMIT to 11`.
+This code has a classic [off-by-one](https://simple.wikipedia.org/wiki/Off-by-one_error) bug. We could easily fix it by changing `>=` to `>`, or by redefining `CART_TOO_BIG_LIMIT = 11`.
 
 But the root problem is that `CART_TOO_BIG_LIMIT` is an ambiguous name — it’s not clear whether you mean “up to” or “up to and including.”
 
@@ -79,14 +79,14 @@ if shopping_cart.num_items() > MAX_ITEMS_IN_CART:
 Here is another example where you can’t tell if it’s “up to” or “up to and including”
 
 ```python
-print(range(start=2, stop=4))
 # Does this print [2,3] or [2,3,4] (or something else)?
+print(range(start=2, stop=4))
 ```
 
 For inclusive ranges likes these (where the range should include both end points), a good choice is `first/last`. For instance:
 
 ```
-set.PrintKeys(first="Bart", last="Maggie")
+set.printKeys(first="Bart", last="Maggie")
 ```
 
 In addition to `first/last`, the names `min/max` may also work for inclusive ranges, assuming they “sound right” in that context.
@@ -96,16 +96,16 @@ In addition to `first/last`, the names `min/max` may also work for inclusive ran
 In practice, it’s often more convenient to use `inclusive/exclusive` ranges. For example, if you want to print all the events that happened on October 16, it’s easier to write:
 
 ```python
-PrintEventsInRange("OCT 16 12:00am", "OCT 17 12:00am")
+printEventsInRange("OCT 16 12:00am", "OCT 17 12:00am")
 ```
 
 than it is to write
 
 ```python
-PrintEventsInRange("OCT 16 12:00am", "OCT 16 11:59:59.9999pm")
+printEventsInRange("OCT 16 12:00am", "OCT 16 11:59:59.9999pm")
 ```
 
-So what is a good pair of names for these parameters? Well, the typical programming convention for naming an inclusive/exclusive range is `begin/end`.
+So what is a good pair of names for these parameters? Well, the typical programming convention for naming an `inclusive/exclusive` range is `begin/end`.
 
 ### Naming Booleans
 

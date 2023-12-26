@@ -13,8 +13,7 @@ def get_page(url):
   pass
 ```
 
-The word `get` doesn’t really say much. Does this method get a page from a local cache, from a database, or from the Internet? If it’s from the Internet,
-a more specific name might be `FetchPage()` or `DownloadPage()`.
+The word `get` doesn’t really say much. Does this method get a page from a local cache, a database, or the Internet? If it’s from the Internet, a more specific name might be `fetch_page()` or `download_page()`.
 
 Here’s an example of a BinaryTree class:
 
@@ -26,20 +25,20 @@ class BinaryTree() {
 };
 ```
 
-What would you expect the `Size()` method to return? The height of the tree, the number of nodes, or the memory footprint of the tree?
+What would you expect the `size()` method to return? The height of the tree, the number of nodes, or the memory footprint of the tree?
 
-The problem is that `Size()` doesn’t convey much information. A more specific name would be `Height()`, `NumNodes()`, or `MemoryBytes()`.
+The problem is that `size()` doesn’t convey much information. A more specific name would be `height()`, `numNodes()`, or `memoryBytes()`.
 
 As another example, suppose you have some sort of Thread class:
 
 ```cpp
 class Thread {
-  void Stop();
+  void stop();
     ...
 };
 ```
 
-The name `Stop()` is okay, but depending on what exactly it does, there might be a more specific name. For instance, you might call it `Kill()` instead, if it’s a heavyweight operation that can’t be undone. Or you might call it `Pause()`, if there is a way to `Resume()` it.
+The name `stop()` is okay, but depending on what exactly it does, there might be a more specific name. For instance, you might call it `kill()` instead, if it’s a heavyweight operation that can’t be undone. Or you might call it `pause()`, if there is a way to `resume()` it.
 
 ### Finding More `Colorful` Words
 
@@ -61,18 +60,19 @@ Names like `tmp`, `retval`, and `foo` are usually cop-outs that mean “I can’
 For example, here’s a JavaScript function that uses retval:
 
 ```jsx
-let euclidean_norm = function (v) {
+let euclideanNorm = function (v) {
   let retval = 0.0;
     
   for (let i = 0; i < v.length; i += 1)
-    retval += v[i] * v[i];
+    retval += (v[i] * v[i]);
+
   return Math.sqrt(retval);
 }
 ```
 
 It’s tempting to use `retval` when you can’t think of a better name for your return value. But `retval` doesn’t contain much information other than “I am a return value”.
 
-A better name would describe the purpose of the variable or the value it contains. In this case, the variable is accumulating the sum of the squares of `v`. So a better name is `sum_squares`. This would announce the purpose of the variable upfront and might help catch a bug.
+A better name would describe the purpose of the variable or the value it contains. In this case, the variable is accumulating the sum of the squares of `v`. So a better name is `sumSquares`. This would announce the purpose of the variable upfront and might help catch a bug.
 
 > The name `retval` doesn’t pack much information. Instead, use a name that describes the variable’s value.
 
@@ -143,8 +143,8 @@ if (clubs[ci].members[mi] == users[ui])
 
 When naming a `variable`, `function`, or other element, describe it concretely rather than abstractly.
 
-For example, suppose you have an internal method named `ServerCanStart()`, which tests whether the server can  listen on a given TCP/IP port. The name `ServerCanStart()` is somewhat abstract, though. 
-A more concrete name would be `CanListenOnPort()`. This name directly describes what the method will do.
+For example, suppose you have an internal method named `serverCanStart()`, which tests whether the server can  listen on a given TCP/IP port. The name `serverCanStart()` is somewhat abstract, though. 
+A more concrete name would be `canListenOnPort()`. This name directly describes what the method will do.
 
 ### Attaching Extra Information to a Name
 
@@ -168,10 +168,10 @@ For example, here is some JavaScript code that measures the load time of a web p
 
 ```jsx
 // top of the page
-var start = (new Date()).getTime();
+let start = new Date().getTime();
 ...
 // bottom of the page
-var elapsed = (new Date()).getTime() - start;
+let elapsed = new Date().getTime() - start;
 document.writeln("Load time was: " + elapsed + " seconds");
 ```
 
@@ -181,10 +181,10 @@ By appending `_ms` to our variables, we can make everything more explicit:
 
 ```jsx 
 // top of the page
-var start_ms = (new Date()).getTime();
+let start_ms = new Date().getTime();
 ...
 // bottom of the page
-var elapsed_ms = (new Date()).getTime() - start_ms;
+let elapsed_ms = new Date().getTime() - start_ms;
 document.writeln("Load time was: " + elapsed_ms / 1000 + " seconds");
 ```
 
@@ -192,10 +192,10 @@ Besides time, there are plenty of other units that come up in programming. Here 
 
 | Function parameter      | Renaming parameter to encode units |
 | ----------- | ----------- |
-| `Start(int delay)`      | delay → delay_secs       |
-| `CreateCache(int size)`   | size → size_mb        |
-| `ThrottleDownload(float limit)`      | limit → max_kbps       |
-| `Rotate(float angle)`   | angle → degrees_cw        |
+| `start(int delay)`      | delay → delay_secs       |
+| `createCache(int size)`   | size → size_mb        |
+| `throttleDownload(float limit)`      | limit → max_kbps       |
+| `rotate(float angle)`   | angle → degrees_cw        |
 
 ### Encoding Other Important Attributes
 
@@ -209,7 +209,7 @@ For this, you might want to use variable names like `unTrustedUrl` or `unSafeMes
 
 When picking a good name, there’s an implicit constraint that the name shouldn’t be too long. No one likes to work with identifiers like this:
 
-```jsx! 
+```jsx
 let newNavigationControllerWrappingViewControllerForDataSourceOfClass = 45;
 ```
 
@@ -237,7 +237,7 @@ If an identifier has a large scope, the name needs to carry enough information t
 
 ### Throwing Out Unneeded Words
 
-Sometimes words inside a name can be removed without losing any information at all. For instance, instead of `ConvertToString()`, the name `ToString()` is smaller and doesn’t lose any real information. Similarly, instead of `DoServeLoop()`, the name `ServeLoop()` is just as clear.
+Sometimes words inside a name can be removed without losing any information at all. For instance, instead of `convertToString()`, the name `toString()` is smaller and doesn’t lose any real information. Similarly, instead of `doServeLoop()`, the name `serveLoop()` is just as clear.
 
 ### Use Name Formatting to Convey Meaning
 
@@ -246,7 +246,7 @@ static const int kMaxOpenFiles = 100;
 
 class LogReader {
   public:
-    void OpenFile(string local_file);
+    void openFile(string local_file);
 
   private:
     int offset_;
@@ -264,15 +264,15 @@ Class member variables are like normal variables, but must end with an underscor
 stats.clear();
 ```
 
-you might ordinarily wonder, *Does* `stats` *belong to this class? Is this code changing the internal state of the class?* If the `member_` convention is used, you can quickly conclude, *No,* `stats` must be a local variable. Otherwise it would be named `stats_`.
+you might wonder, *Does* `stats` *belong to this class? Is this code changing the internal state of the class?* If the `member_` convention is used, you can quickly conclude, *No,* `stats` must be a local variable. Otherwise it would be named `stats_`.
 
 ### Summary
 
-The single theme for this chapter is: ==pack information into your names==. By this, we mean that the reader can extract a lot of information just from reading the name.
+The single theme for this chapter is: "pack information into your names". By this, we mean that the reader can extract a lot of information just from reading the name.
 
 Here are some specific tips we covered:
 
-- Use specific words—for example, instead of `Get`, words like `Fetch` or `Download` might be better, depending on the context.
+- Use specific words—for example, instead of `get`, words like `fetch` or `download` might be better, depending on the context.
 - Avoid generic names—like `tmp` and `retval`, unless there’s a specific reason to use them.
 - Use concrete names—that describe things in more detail—the name `ServerCanStart()` is vague compared to `CanListenOnPort()`.
 - Attach important details—to variable names for example, append `_ms` to a variable whose value is in milliseconds or prepend `raw_` to an unprocessed variable that needs escaping.

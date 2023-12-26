@@ -2,18 +2,19 @@
 
 Specifically, there are three principles we use:
 
-* Use consistent layout, with patterns the reader can get used to.
+* Use a consistent layout, with patterns the reader can get used to.
 * Make similar code look similar.
 * Group related lines of code into blocks.
 
-```cpp!
+```cpp
 class StatsKeeper {
  public:
     // A class for keeping track of a series of doubles
-    void Add(double d);  // and methods for quick statistics about them
-  private: int count;  /* how many so far  */ 
+    void add(double d);  // and methods for quick statistics about them
+  private: 
+    int count;  /* how many so far  */ 
   public:
-    double Average();
+    double average();
 
   private:   
     double minimum;
@@ -29,8 +30,8 @@ It would take you a lot longer to understand it than if you had this cleaner ver
 // and methods for quick statistics about them.
 class StatsKeeper {
   public:
-    void Add(double d);
-    double Average();
+    void add(double d);
+    double average();
 
   private:
     list<double> past_items;
@@ -40,7 +41,7 @@ class StatsKeeper {
 };
 ```
 
-### Rearrange Line Breaks to Be Consistent and Compact
+### Rearrange Line Breaks to be Consistent and Compact
 
 Suppose you were writing Java code to evaluate how your program behaves under various network connection speeds. You have a `TcpConnectionSimulator` that takes four parameters in the constructor:
 
@@ -51,19 +52,19 @@ Suppose you were writing Java code to evaluate how your program behaves under va
 
 Your code needed three different `TcpConnectionSimulator` instances
 
-```java!
+```java
 public class PerformanceTester {
-    public static final TcpConnectionSimulator wifi = new TcpConnectionSimulator(
+    public static final tcpConnectionSimulator wifi = new TcpConnectionSimulator(
         500, /* Kbps */
         80, /* millisecs latency */
         200, /* jitter */
         1 /* packet loss % */);
 
     public static final TcpConnectionSimulator t3_fiber = new TcpConnectionSimulator(
-            45000, /* Kbps */
-            10, /* millisecs latency */
-            0, /* jitter */
-            0 /* packet loss % */);
+        45000, /* Kbps */
+        10, /* millisecs latency */
+        0, /* jitter */
+        0 /* packet loss % */);
 
     public static final TcpConnectionSimulator cell = new TcpConnectionSimulator(
         100, /* Kbps */
@@ -75,7 +76,7 @@ public class PerformanceTester {
 
 To make the code look more consistent, we could introduce extra line breaks
 
-```java!
+```java
 public class PerformanceTester {
     public static final TcpConnectionSimulator wifi =
         new TcpConnectionSimulator(
@@ -122,45 +123,45 @@ public class PerformanceTester {
 
 Suppose you had a personnel database that provided the following function:
 
-```cpp!
+```c
 // Turn a partial_name like "Doug Adams" into "Mr. Douglas Adams".
 // If not possible, 'error' is filled with an explanation.
-stringExpandFullName(DatabaseConnection dc, string partial_name, string* error);
+expandFullName(DatabaseConnection dc, string partial_name, string* error);
 ```
 
 and this function was tested with a series of examples:
 
-```cpp!
+```c
 DatabaseConnection database_connection;
 string error;
 
-assert(ExpandFullName(database_connection, "Doug Adams", &error)
+assert(expandFullName(database_connection, "Doug Adams", &error)
     == "Mr. Douglas Adams");
 assert(error == "");
 
-assert(ExpandFullName(database_connection, " Jake  Brown ", &error)
+assert(expandFullName(database_connection, " Jake  Brown ", &error)
     == "Mr. Jacob Brown III");
 assert(error == "");
 
-assert(ExpandFullName(database_connection, "No Such Guy", &error) == "");
+assert(expandFullName(database_connection, "No Such Guy", &error) == "");
 assert(error == "no match found");
 
-assert(ExpandFullName(database_connection, "John", &error) == "");
+assert(expandFullName(database_connection, "John", &error) == "");
 assert(error == "more than one result");
 ```
 
 To really improve this code, we need a helper method so the code can look like this:
 
 ```c
-CheckFullName("Doug Adams", "Mr. Douglas Adams", "");
-CheckFullName(" Jake  Brown ", "Mr. Jake Brown III", "");
-CheckFullName("No Such Guy", "", "no match found");
-CheckFullName("John", "", "more than one result");
+checkFullName("Doug Adams", "Mr. Douglas Adams", "");
+checkFullName(" Jake  Brown ", "Mr. Jake Brown III", "");
+checkFullName("No Such Guy", "", "no match found");
+checkFullName("John", "", "more than one result");
 ```
 
-Now it’s more clear that there are four tests happening, each with different parameters. Even though all the “dirty work” is inside `CheckFullName()`, that function isn’t so bad, either:
+Now it’s more clear that four tests are happening, each with different parameters. Even though all the “dirty work” is inside `checkFullName()`, that function isn’t so bad, either:
 
-```cpp!
+```c
 #include <string>
 
 void CheckFullName(
@@ -180,16 +181,16 @@ The moral of the story is that making code “look pretty” often results in mo
 
 ### Use Column Alignment When Helpful
 
-Sometimes you can introduce “column alignment” to make the code easier to read. For example, in the previous section, you could space out and line up the arguments to `CheckFullName()`:
+Sometimes you can introduce “column alignment” to make the code easier to read. For example, in the previous section, you could space out and line up the arguments to `checkFullName()`:
 
 ```cpp
-CheckFullName("Doug Adams"   , "Mr. Douglas Adams" , "");
-CheckFullName(" Jake  Brown ", "Mr. Jake Brown III", "");
-CheckFullName("No Such Guy"  , ""                  , "no match found");
-CheckFullName("John"         , ""                  , "more than one result");
+checkFullName("Doug Adams"   , "Mr. Douglas Adams" , "");
+checkFullName(" Jake  Brown ", "Mr. Jake Brown III", "");
+checkFullName("No Such Guy"  , ""                  , "no match found");
+checkFullName("John"         , ""                  , "more than one result");
 ```
 
-In this code, it’s easier to distinguish the second and third arguments to `CheckFullName()`.
+In this code, it’s easier to distinguish the second and third arguments to `checkFullName()`.
 
 ### Pick a Meaningful Order, and Use It Consistently
 
@@ -213,7 +214,7 @@ Whatever the order, you should use the same order throughout your code. It would
 
 ### Break Code into “Paragraphs”
 
-Written text is broken into paragraphs for a number of reasons:
+Written text is broken into paragraphs for several reasons:
 
 - It’s a way to group similar ideas together and set them apart from other ideas.
 - It provides a visual “stepping stone”—without it, it’s easy to lose your place on the page.
@@ -221,7 +222,7 @@ Written text is broken into paragraphs for a number of reasons:
 
 Code should be broken into “paragraphs” for the same reasons. For example, no one likes to read a giant lump of code like this:
 
-```python!
+```python
 # Import the user's email contacts, and match them to users in our system.
 # Then display a list of those users that he/she isn't already friends with.
 def suggest_new_friends(user, email_password):
@@ -237,9 +238,9 @@ def suggest_new_friends(user, email_password):
   return render("suggested_friends.html", display)
 ```
 
-It may not be obvious, but this function goes through a number of distinct steps. So it would be especially useful to break up those lines of code into paragraphs:
+It may not be obvious, but this function goes through several distinct steps. So it would be especially useful to break up those lines of code into paragraphs:
 
-```python!
+```python
 def suggest_new_friends(user, email_password):
   # Get the user's friends' email addresses.
   friends = user.friends()
@@ -267,7 +268,7 @@ def suggest_new_friends(user, email_password):
 
 Everyone prefers to read code that’s aesthetically pleasing. By “formatting” your code in a consistent, meaningful way, you make it easier and faster to read.
 
-Here are specific techniques we discussed:
+Here are the specific techniques we discussed:
 
 - If multiple blocks of code are doing similar things, try to give them the same silhouette.
 - Aligning parts of the code into “columns” can make code easy to skim through.

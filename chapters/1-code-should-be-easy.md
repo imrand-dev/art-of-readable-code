@@ -6,7 +6,7 @@ Over the past five years, we have collected hundreds of examples of *bad code*, 
 
 ### What makes code "Better"?
 
-Most programmers make programming decisions based on gut feel and intuition.
+Most programmers make programming decisions based on gut feelings and intuition.
 
 We all know that code like this
 
@@ -64,14 +64,17 @@ Generally speaking, the less code you write to solve a problem, the better.
 But fewer lines isn’t always better! There are plenty of times when a one-line expression like
 
 ```cpp
-assert((!(bucket = FindBucket(key))) || !bucket->IsOccupied());
+assert((!(bucket = findBucket(key))) || !bucket->isOccupied());
 ```
 
 takes more time to understand than if it were two lines
 
 ```cpp
-bucket = FindBucket(key);
-if (bucket != NULL) assert(!bucket->IsOccupied());
+bucket = findBucket(key);
+
+if (bucket != NULL) {
+	assert(!bucket->isOccupied());
+} 
 ```
 
 So even though having fewer lines of code is a good goal, minimizing the time-till-understanding is an even better goal.
