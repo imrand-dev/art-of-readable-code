@@ -9,8 +9,8 @@
 * [Chapter 3: Names That Can’t Be Misconstrued](chapters/3-names-cant-misconstructed.md)
 * [Chapter 4: Aesthetics](chapters/4-aesthetics.md)
 * [Chapter 5: Knowing What to Comment](chapters/5-knowing-what-to-comment.md)
-* Chapter 6: Making Comments Precise and Compact
-* Chapter 7: Making Control Flow Easy to Read
+* [Chapter 6: Making Comments Precise and Compact](chapters/6-making-comments-precise.md)
+* [Chapter 7: Making Control Flow Easy to Read](chapters/7-making-control-flow-easy.md)
 * Chapter 8: Breaking Down Giant Expressions
 * Chapter 9: Variables and Readability
 * Chapter 10: Extracting Unrelated Subproblems
