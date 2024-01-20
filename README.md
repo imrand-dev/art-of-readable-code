@@ -1,5 +1,5 @@
 <a href="https://www.goodreads.com/en/book/show/8677004">
-	<img src="https://i.ibb.co/8K4PvPC/image.png" alt="">
+	<img src="https://i.ibb.co/8K4PvPC/image.png" alt="art-of-readable-code">
 </a>
 
 ## Chapters
@@ -11,7 +11,7 @@
 * [Chapter 5: Knowing What to Comment](chapters/5-knowing-what-to-comment.md)
 * [Chapter 6: Making Comments Precise and Compact](chapters/6-making-comments-precise.md)
 * [Chapter 7: Making Control Flow Easy to Read](chapters/7-making-control-flow-easy.md)
-* Chapter 8: Breaking Down Giant Expressions
+* [Chapter 8: Breaking Down Giant Expressions](chapters/8-breaking-down-expressions.md)
 * Chapter 9: Variables and Readability
 * Chapter 10: Extracting Unrelated Subproblems
 * Chapter 11: One Task at a Time
