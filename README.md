@@ -13,7 +13,7 @@
 * [Chapter 7: Making Control Flow Easy to Read](chapters/7-making-control-flow-easy.md)
 * [Chapter 8: Breaking Down Giant Expressions](chapters/8-breaking-down-expressions.md)
 * [Chapter 9: Variables and Readability](chapters/9-variables-and-readability.md)
-* Chapter 10: Extracting Unrelated Subproblems
+* [Chapter 10: Extracting Unrelated Subproblems](chapters/10-extracting-unrelated-subproblems.md)
 * Chapter 11: One Task at a Time
 * Chapter 12: Turning Thoughts into Code
 * Chapter 13: Writing Less Code
