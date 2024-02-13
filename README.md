@@ -14,7 +14,7 @@
 * [Chapter 8: Breaking Down Giant Expressions](chapters/8-breaking-down-expressions.md)
 * [Chapter 9: Variables and Readability](chapters/9-variables-and-readability.md)
 * [Chapter 10: Extracting Unrelated Subproblems](chapters/10-extracting-unrelated-subproblems.md)
-* Chapter 11: One Task at a Time
+* [Chapter 11: One Task at a Time](chapters/11-one-task-at-a-time.md)
 * Chapter 12: Turning Thoughts into Code
 * Chapter 13: Writing Less Code
 * Chapter 14: Testing and Readability
