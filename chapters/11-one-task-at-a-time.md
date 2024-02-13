@@ -251,7 +251,7 @@ void updateCounts(HttpDownload hd) {
 
 In particular, this code switches back and forth between different tasks. Here are the different tasks interleaved throughout the code:
 
-1. Using `"unknown"` as the default value for each key
+1. Using `unknown` as the default value for each key
 2. Detecting whether members of `HttpDownload` are missing
 3. Extracting the value and converting it to a string
 4. Updating `counts[]`
@@ -306,7 +306,7 @@ void updateCounts(HttpDownload hd) {
 These functions would extract the corresponding value, or return “unknown”. For example:
 
 ```cpp
-string ExitState(HttpDownload hd) {
+string exitState(HttpDownload hd) {
     if (hd.has_event_log() && hd.event_log().has_exit_state()) {
         return ExitStateTypeName(hd.event_log().exit_state());
     } else {
