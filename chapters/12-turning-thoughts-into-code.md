@@ -35,11 +35,11 @@ Here is an alternative solution inspired by this description:
 ```php
 $is_admin = is_admin_request();
 if ($is_admin) {
-	// permission granted
+    // permission granted
 } elseif ($document && ($document['username'] == $_SESSION['username'])) {
-	// permission granted
+    // permission granted
 } else {
-	return not_authorized();
+    return not_authorized();
 }
 ```
 
